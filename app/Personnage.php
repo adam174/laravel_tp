@@ -8,6 +8,7 @@ class Personnage extends Model
 {
     protected $fillable = [
         'nom',
-        'titre'
+        'titre',
+        'note'
     ];
 }

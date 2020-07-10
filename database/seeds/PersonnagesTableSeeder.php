@@ -13,22 +13,26 @@ class PersonnagesTableSeeder extends Seeder
     {
          App\Personnage::create([
             'nom' => 'Steve Carell',
-            'titre' => 'Get Smart'
+            'titre' => 'Get Smart',
+            'note' => '15'
         ]);
 
         App\Personnage::create([
             'nom' => 'Johnny Depp',
-            'titre' => 'the pirates of the caribbean'
+            'titre' => 'the pirates of the caribbean',
+            'note' => '19'
         ]);
 
          App\Personnage::create([
             'nom' => 'Martin Freeman',
-            'titre' => 'The Hobbit: An Unexpected Journey'
+            'titre' => 'The Hobbit: An Unexpected Journey',
+            'note' => '20'
         ]);
 
          App\Personnage::create([
             'nom' => 'Tom Cruise',
-            'titre' => 'Mission Impossible – Fallout'
+            'titre' => 'Mission Impossible – Fallout',
+            'note' => '17'
         ]);
     }
 }
