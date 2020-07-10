@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use App\Personnage; 
 
 use Illuminate\Http\Request;
 
 class PersonnagesController extends Controller
 {
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,8 @@ class PersonnagesController extends Controller
     public function index()
     {
         $prenom = Auth::user()->name;
-        
+        $personnages = Personnage::get();
+        return view('personnages_vue', compact('prenom','personnages'));
     }
 
     /**

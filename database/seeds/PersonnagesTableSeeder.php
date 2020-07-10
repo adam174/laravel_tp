@@ -17,17 +17,17 @@ class PersonnagesTableSeeder extends Seeder
         ]);
 
         App\Personnage::create([
-            'name' => 'Johnny Depp',
+            'nom' => 'Johnny Depp',
             'titre' => 'the pirates of the caribbean'
         ]);
 
          App\Personnage::create([
-            'name' => 'Martin Freeman',
+            'nom' => 'Martin Freeman',
             'titre' => 'The Hobbit: An Unexpected Journey'
         ]);
 
          App\Personnage::create([
-            'name' => 'Tom Cruise',
+            'nom' => 'Tom Cruise',
             'titre' => 'Mission Impossible – Fallout'
         ]);
     }
