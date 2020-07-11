@@ -10,5 +10,8 @@
       @endforeach
       </ul>
     </div>
+    @if(!empty(Session::get('success')))
+        <div class="alert alert-success"> {{ Session::get('success') }}</div>
+    @endif
 </div>
 @endsection

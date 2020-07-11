@@ -22,6 +22,7 @@ class PersonnagesController extends Controller
     {
         $prenom = Auth::user()->name;
         $personnages = Personnage::get();
+      //dd($personnages->toArray());
         return view('personnages_vue', compact('prenom','personnages'));
     }
 
@@ -32,7 +33,8 @@ class PersonnagesController extends Controller
      */
     public function create()
     {
-        //
+        $prenom = Auth::user()->name;
+        return view('personnages_create', compact('prenom'));
     }
 
     /**
@@ -43,7 +45,15 @@ class PersonnagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $request->validate([
+            'nom' => ['required','string'],
+            'titre' => ['required','string'],
+            'note' => ['required','numeric']
+        ]);
+
+        Personnage::create($request->all());
+        return redirect()->route('personnages.index')
+                        ->with('success','created successfully.');
     }
 
     /**
