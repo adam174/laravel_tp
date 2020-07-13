@@ -48,7 +48,7 @@ class PersonnagesController extends Controller
         $validator = $request->validate([
             'nom' => ['required','string'],
             'titre' => ['required','string'],
-            'note' => ['required','numeric']
+            'note' => ['numeric','Nullable']
         ]);
 
         Personnage::create($request->all());
@@ -64,7 +64,10 @@ class PersonnagesController extends Controller
      */
     public function show($id)
     {
-        //
+            $prenom = Auth::user()->name;
+            $personnage = Personnage::find($id);
+            dd($personnage);
+            return view('personnages_show',compact('personnage','prenom'));
     }
 
     /**
@@ -73,9 +76,11 @@ class PersonnagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+         $prenom = Auth::user()->name;
+         $personnage = Personnage::find($id);
+             return view('personnages_edit',compact('personnage','prenom'));
     }
 
     /**
@@ -87,7 +92,15 @@ class PersonnagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $validator = $request->validate([
+            'nom' => ['required','string'],
+            'titre' => ['required','string'],
+            'note' => ['required','numeric']
+        ]);
+        $personnage = Personnage::find($id);
+        $personnage->update($request->all());
+        return redirect()->route('personnages.index')
+                        ->with('success','updated successfully.');
     }
 
     /**
@@ -96,8 +109,10 @@ class PersonnagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        $personnage = Personnage::find($id);
+        $personnage->delete();
+        return redirect()->route('personnages.index')->with('success','deleted successfully');
     }
 }

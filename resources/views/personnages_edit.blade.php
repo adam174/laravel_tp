@@ -16,19 +16,20 @@
     <div class="row">
       <div class="col-10">
          <h1>Bienvenue {{$prenom}}</h1>
-        <form action="{{route('personnages.store')}}" method="post">
-         @csrf
+        <form action="{{ route('personnages.update',$personnage->id) }}" method="post">
+          @csrf
+        @method('PUT')
          <div class="form-group">
            <label for="nom">Nom : </label>
-           <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom">
+           <input type="text" class="form-control" name="nom" id="nom" value="{{ $personnage->nom }}">
          </div>
           <div class="form-group">
            <label for="titre">Titre : </label>
-           <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre">
+           <input type="text" class="form-control" name="titre" id="titre" value="{{ $personnage->titre }}">
          </div>
           <div class="form-group">
            <label for="note">Note : </label>
-           <input type="number" class="form-control" name="note" id="note" placeholder="/20">
+           <input type="number" class="form-control" name="note" id="note" value="{{ $personnage->note }}">
          </div>
          <button type="submit" class="btn btn-primary">Enregistrer</button>
       </form>
