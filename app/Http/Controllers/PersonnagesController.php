@@ -62,11 +62,10 @@ class PersonnagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Personnage $personnage)
     {
             $prenom = Auth::user()->name;
-            $personnage = Personnage::find($id);
-            dd($personnage);
+           // dd($personnage);
             return view('personnages_show',compact('personnage','prenom'));
     }
 

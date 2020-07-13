@@ -32,7 +32,7 @@
                     @csrf
                <td> <button type="submit" class="btn btn-sm btn-danger">Suprimer</button></td>  
                 </form>
-               <td><a name="" id="" class="btn btn-sm btn-primary" href="/personnages/11" role="button">Voir details</a></td>
+               <td><a name="" id="" class="btn btn-sm btn-primary" href="/personnages/{{$personnage->id}}" role="button">Voir details</a></td>
           </tr>
        @endforeach
       
